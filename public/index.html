@@ -10,9 +10,9 @@
         <script src="app.js"></script>
     </head>
     <body ng-controller="BookmarkController as bctrl">
-        <h1>Bookmark'd</h1>
+        <h1>Mandy's Bookmarks</h1>
         <!-- <h2>{{ bctrl.hello }}</h2> -->
-        <div class="card brown lighten-1">
+        <div class="card light-blue lighten-4">
             <div
                 ng-repeat="bookmark in bctrl.bookmarks">
                 <div class="card-content">
@@ -33,7 +33,7 @@
                 </div>
             </div>
         </div>
-        <div class="newBookmark card brown lighten-1">
+        <div class="newBookmark card light-blue lighten-4">
             <h2>Add New Bookmark</h2>
             <form ng-submit="bctrl.createBookmark()">
                 Title: <input type="text" ng-model="bctrl.title"><br>
