@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="MyApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Bookmark'd</title>
+        <link rel="shortcut icon" type="image/png" href="image/favicon.ico">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body ng-controller="BookmarkController as bctrl">
+        <h1>Bookmark'd</h1>
+        <!-- <h2>{{ bctrl.hello }}</h2> -->
+        <div class="card brown lighten-1">
+            <div
+                ng-repeat="bookmark in bctrl.bookmarks">
+                <div class="card-content">
+                    <a href="{{bookmark.url}}">
+                        <span class="title">
+                            {{bookmark.title}}
+                        </span>
+                    </a><br>
+                    <span ng-click="bctrl.deleteBookmark(bookmark)" class="deleteButton">DELETE</span><br>
+                    <a href="#" ng-click="bctrl.bookmarkIndexShow = $index">
+                        Edit this Bookmark
+                    </a>
+                    <form ng-if="$index === bctrl.bookmarkIndexShow" ng-submit="bctrl.editBookmark(bookmark)">
+                        <h6>Title:<h6> <input type="text" ng-model="bctrl.updatedTitle" placeholder="{{bookmark.title}}">
+                        <h6>URL:<h6> <input type="text" ng-model="bctrl.updatedUrl" placeholder="{{bookmark.url}}">
+                        <input type="submit" value="Edit Bookmark" class="submitButton">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="newBookmark card brown lighten-1">
+            <h2>Add New Bookmark</h2>
+            <form ng-submit="bctrl.createBookmark()">
+                Title: <input type="text" ng-model="bctrl.title"><br>
+                URL: <input type="text" ng-model="bctrl.url"><br>
+                <input type="submit" value="Add Bookmark" class="submitButton">
+            </form>
+        </div>
+    </body>
+</html>
